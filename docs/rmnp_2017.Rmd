@@ -1,0 +1,260 @@
+---
+title: "Rocky Mountain National Park Trip, 2017"
+output: 
+  html_document:
+    theme: sandstone
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+
+library(knitr)
+
+opts_chunk$set(
+  echo=FALSE,
+  class = "",
+  warning = FALSE,
+  message = FALSE
+)
+
+```
+
+On June 3rd, 2017 Winston, Arlo, Sydney, and Brian Breaker loaded up and headed out to Rocky Mountian National Park. Some of the locations in the following pictures can be seen in the map below.
+
+```{r, fig.height=6, fig.width=10}
+coordsDF <- data.frame(nameLoc = c("I-70 Rest Area", "Home", "Camp Site", "Veritas Boulder", "Random Roadside Boulder", "Nymph Lake", "The Pool", "Trail Ridge Road"), 
+                     x = c(-101.916033, -92.305111, -105.606793, -105.630841, -105.588137, -105.651470, -105.659810, -105.727081), 
+                     y = c(39.329776, 34.748137, 40.360683, 40.316981, 40.371403, 40.310112, 40.349687, 40.413270))
+
+pacman::p_load("leaflet", "rgdal")
+
+m <- leaflet::leaflet()
+
+grp <- c("USGS Topo", "USGS Imagery Only", "USGS Imagery Topo",
+         "USGS Shaded Relief", "Hydrography")
+
+att <- paste0("<a href='https://www.usgs.gov/'>",
+              "U.S. Geological Survey</a> | ",
+              "<a href='https://www.usgs.gov/laws/policies_notices.html'>",
+              "Policies</a>")
+
+GetURL <- function(service, host = "basemap.nationalmap.gov") {
+  sprintf("https://%s/arcgis/services/%s/MapServer/WmsServer", host, service)
+}
+
+m <- leaflet::addWMSTiles(m, GetURL("USGSTopo"),
+                            group = grp[1], attribution = att, layers = "0")
+m <- leaflet::addWMSTiles(m, GetURL("USGSImageryOnly"),
+                            group = grp[2], attribution = att, layers = "0")
+m <- leaflet::addWMSTiles(m, GetURL("USGSImageryTopo"),
+                            group = grp[3], attribution = att, layers = "0")
+m <- leaflet::addWMSTiles(m, GetURL("USGSShadedReliefOnly"),
+                            group = grp[4], attribution = att, layers = "0")
+
+opt <- leaflet::WMSTileOptions(format = "image/png", transparent = TRUE)
+m <- leaflet::addWMSTiles(m, GetURL("USGSHydroCached"),
+                            group = grp[5], options = opt, layers = "0")
+m <- leaflet::hideGroup(m, grp[5])
+
+sp::coordinates(coordsDF) <- c("x", "y")
+
+sp::proj4string(coordsDF) <- sp::CRS("+init=epsg:4326")
+
+nam <- coordsDF$nameLoc
+
+pop <- sprintf("<b>Name:</b> %s<br/>", nam)
+
+opt <- leaflet::markerClusterOptions(showCoverageOnHover = FALSE)
+
+m <- leaflet::addCircleMarkers(m, radius = 10, weight = 3, popup = pop,
+                                 clusterOptions = opt, data = coordsDF)
+
+opt <- leaflet::layersControlOptions(collapsed = TRUE)
+
+m <- leaflet::addLayersControl(m, baseGroups = grp[1:4],
+                                 overlayGroups = grp[5], options = opt)
+
+m
+
+```
+
+  <br>
+
+#Day 1
+
+We loaded up our little camper and drove... for a long time.
+
+```{r, out.width="1280px", out.height="960px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170603_125713.jpg", dpi = 96)
+```
+<br>*At home.*</br>
+
+#Day 2
+
+We finished the drive to RMNP and set up camp for the week. We were at the Moraine Park Campground and may have had the best view that could be gotten there.
+
+```{r, out.width="1787px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/PANO_20170604_123033.jpg", dpi = 96)
+```
+<br>*I-70 Rest Area.*</br>
+
+```{r, out.width="1920px", out.height="662px", out.extra="0px"}
+knitr::include_graphics("pics/PANO_20170604_183733.jpg", dpi = 96)
+```
+<br>*Our camp site.*</br>
+
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170604_194841.jpg", dpi = 96)
+```
+<br>*Just in time for dinner.*</br>
+
+#Day 3
+
+We hung around the campground, tried to recover from the drive, and then took a short hike up to Nymph Lake. Arlo loved it... got to play in the snow.
+
+```{r, out.width="1209px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170605_121926.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="1209px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170605_122345.jpg", dpi = 96)
+```
+<br>*On the shore of Nymph Lake*</br>
+
+```{r, out.width="1209px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170605_123856.jpg", dpi = 96)
+```
+<br>*On a boulder above Nymph Lake*</br>
+
+#Day 4
+
+We spent some more time around the campground and hiked the Fern Lake Trail to The Pool.
+
+```{r, out.width="1209px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170606_111425.jpg", dpi = 96)
+```
+<br>*On the trail near The Pool*</br>
+
+```{r, out.width="1209px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170606_112225.jpg", dpi = 96)
+```
+<br>*The Pool*</br>
+
+#Day 5
+
+We spent some more time around the campground and hit up the Veritas boulder. Arlo killed it.
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170607_101103.jpg", dpi = 96)
+```
+  <br>
+
+```{r, out.width="1209px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170607_100153.jpg", dpi = 96)
+```
+<br>*Veritas Boulder*</br>
+
+#Day 6
+
+We drove to the top of the Trail Ridge Road, came back down to Estes Park and had some lunch, and hit up a random roadside boulder we found.
+
+```{r, out.width="1209px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_102458.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_103600.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="1920px", out.height="743px", out.extra="0px"}
+knitr::include_graphics("pics/PANO_20170608_102509.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="1920px", out.height="445px", out.extra="0px"}
+knitr::include_graphics("pics/PANO_20170608_102736.jpg", dpi = 96)
+```
+<br>*At the top of Trail Ridge Road*</br>
+
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_142357.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_142508.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_142941.jpg", dpi = 96)
+```
+<br>*Throwin for it. Get em.*</br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_143225.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_144254.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_143956.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_144004.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_144153.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_143437.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_143503.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_144359.jpg", dpi = 96)
+```
+  <br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_144526.jpg", dpi = 96)
+```
+<br>*Random roadside boulder*</br>
+  
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170608_172654.jpg", dpi = 96)
+```
+<br>*Happy meals for the boys and back to the camp site*</br>
+  
+#Day 7 and 8
+
+We drove... home.
+
+#Day 9
+
+It's good to be back home and...
+
+```{r, out.width="680px", out.height="907px", out.extra="0px"}
+knitr::include_graphics("pics/IMG_20170611_185923.jpg", dpi = 96)
+```
+<br>Winston loves black beans.</br>
+  
