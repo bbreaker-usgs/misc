@@ -1,0 +1,8 @@
+name: "breakerFam"
+navbar:
+  title: "The Breaker Family Roadtrips"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "RMNP 2017"
+      href: rmnp_2017.html
