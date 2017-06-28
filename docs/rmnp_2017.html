@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Rocky Mountain National Park Trip, 2017</title>
+
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/sandstone.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<script src="site_libs/htmlwidgets-0.8/htmlwidgets.js"></script>
+<link href="site_libs/leaflet-0.7.7/leaflet.css" rel="stylesheet" />
+<script src="site_libs/leaflet-0.7.7/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<link href="site_libs/leaflet-label-0.2.2/leaflet.label.css" rel="stylesheet" />
+<script src="site_libs/leaflet-label-0.2.2/leaflet.label.js"></script>
+<script src="site_libs/Proj4Leaflet-0.7.2/proj4-compressed.js"></script>
+<script src="site_libs/Proj4Leaflet-0.7.2/proj4leaflet.js"></script>
+<script src="site_libs/leaflet-binding-1.1.0/leaflet.js"></script>
+<link href="site_libs/leaflet-markercluster-0.5.0/MarkerCluster.css" rel="stylesheet" />
+<link href="site_libs/leaflet-markercluster-0.5.0/MarkerCluster.Default.css" rel="stylesheet" />
+<script src="site_libs/leaflet-markercluster-0.5.0/leaflet.markercluster.js"></script>
+<script src="site_libs/leaflet-markercluster-0.5.0/leaflet.markercluster.layersupport-src.js"></script>
+<script src="site_libs/leaflet-markercluster-0.5.0/leaflet.markercluster.freezable-src.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 61px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+
+.section h2 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h3 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h4 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h5 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+.section h6 {
+  padding-top: 66px;
+  margin-top: -66px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">The Breaker Family Roadtrips</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="rmnp_2017.html">RMNP 2017</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Rocky Mountain National Park Trip, 2017</h1>
+
+</div>
+
+
+<p><link href="https://fonts.googleapis.com/css?family=Bahiana" rel="stylesheet"></p>
+<p>On June 3rd, 2017 Winston, Arlo, Sydney, and Brian Breaker loaded up and headed out to Rocky Mountian National Park. Some of the locations in the following pictures can be seen in the map below.</p>
+<div id="htmlwidget-3c5f7a88a9327dd48525" style="width:960px;height:576px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3c5f7a88a9327dd48525">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addWMSTiles","args":["https://basemap.nationalmap.gov/arcgis/services/USGSTopo/MapServer/WmsServer",null,"USGS Topo",{"styles":"","format":"image/jpeg","transparent":false,"version":"1.1.1","crs":null,"attribution":"<a href='https://www.usgs.gov/'>U.S. Geological Survey<\/a> | <a href='https://www.usgs.gov/laws/policies_notices.html'>Policies<\/a>","layers":"0"}]},{"method":"addWMSTiles","args":["https://basemap.nationalmap.gov/arcgis/services/USGSImageryOnly/MapServer/WmsServer",null,"USGS Imagery Only",{"styles":"","format":"image/jpeg","transparent":false,"version":"1.1.1","crs":null,"attribution":"<a href='https://www.usgs.gov/'>U.S. Geological Survey<\/a> | <a href='https://www.usgs.gov/laws/policies_notices.html'>Policies<\/a>","layers":"0"}]},{"method":"addWMSTiles","args":["https://basemap.nationalmap.gov/arcgis/services/USGSImageryTopo/MapServer/WmsServer",null,"USGS Imagery Topo",{"styles":"","format":"image/jpeg","transparent":false,"version":"1.1.1","crs":null,"attribution":"<a href='https://www.usgs.gov/'>U.S. Geological Survey<\/a> | <a href='https://www.usgs.gov/laws/policies_notices.html'>Policies<\/a>","layers":"0"}]},{"method":"addWMSTiles","args":["https://basemap.nationalmap.gov/arcgis/services/USGSShadedReliefOnly/MapServer/WmsServer",null,"USGS Shaded Relief",{"styles":"","format":"image/jpeg","transparent":false,"version":"1.1.1","crs":null,"attribution":"<a href='https://www.usgs.gov/'>U.S. Geological Survey<\/a> | <a href='https://www.usgs.gov/laws/policies_notices.html'>Policies<\/a>","layers":"0"}]},{"method":"addWMSTiles","args":["https://basemap.nationalmap.gov/arcgis/services/USGSHydroCached/MapServer/WmsServer",null,"Hydrography",{"styles":"","format":"image/png","transparent":true,"version":"1.1.1","crs":null,"layers":"0"}]},{"method":"hideGroup","args":["Hydrography"]},{"method":"addCircleMarkers","args":[[39.329776,34.748137,40.360683,40.316981,40.371403,40.310112,40.349687,40.41327],[-101.916033,-92.305111,-105.606793,-105.630841,-105.588137,-105.65147,-105.65981,-105.727081],10,null,null,{"lineCap":null,"lineJoin":null,"clickable":true,"pointerEvents":null,"className":"","stroke":true,"color":"#03F","weight":3,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2,"dashArray":null},{"showCoverageOnHover":false,"zoomToBoundsOnClick":true,"spiderfyOnMaxZoom":true,"removeOutsideVisibleBounds":true,"spiderLegPolylineOptions":{"weight":1.5,"color":"#222","opacity":0.5},"freezeAtZoom":false},null,["<b>Name:<\/b> I-70 Rest Area<br/>","<b>Name:<\/b> Home<br/>","<b>Name:<\/b> Camp Site<br/>","<b>Name:<\/b> Veritas Boulder<br/>","<b>Name:<\/b> Random Roadside Boulder<br/>","<b>Name:<\/b> Nymph Lake<br/>","<b>Name:<\/b> The Pool<br/>","<b>Name:<\/b> Trail Ridge Road<br/>"],null,null,null,null]},{"method":"addLayersControl","args":[["USGS Topo","USGS Imagery Only","USGS Imagery Topo","USGS Shaded Relief"],"Hydrography",{"collapsed":true,"autoZIndex":true,"position":"topright"}]}],"limits":{"lat":[34.748137,40.41327],"lng":[-105.727081,-92.305111]}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
+<div id="day-1" class="section level1">
+<h1>Day 1</h1>
+<p>We loaded up our little camper and drove… for a long time.</p>
+<p><img src="pics/IMG_20170603_125713.jpg" width="1280px" height="960px" 0px /> <br><em>At home.</em></br></p>
+</div>
+<div id="day-2" class="section level1">
+<h1>Day 2</h1>
+<p>We finished the drive to RMNP and set up camp for the week. We were at the Moraine Park Campground and may have had the best view that could be gotten there.</p>
+<p><img src="pics/PANO_20170604_123033.jpg" width="1787px" height="907px" 0px /> <br><em>I-70 Rest Area.</em></br></p>
+<p><img src="pics/PANO_20170604_183733.jpg" width="1920px" height="662px" 0px /> <br><em>Our camp site.</em></br></p>
+<p><img src="pics/IMG_20170604_194841.jpg" width="680px" height="907px" 0px /> <br><em>Just in time for dinner.</em></br></p>
+</div>
+<div id="day-3" class="section level1">
+<h1>Day 3</h1>
+<p>We hung around the campground, tried to recover from the drive, and then took a short hike up to Nymph Lake. Arlo loved it… got to play in the snow.</p>
+<p><img src="pics/IMG_20170605_121926.jpg" width="1209px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170605_122345.jpg" width="1209px" height="907px" 0px /> <br><em>On the shore of Nymph Lake</em></br></p>
+<p><img src="pics/IMG_20170605_123856.jpg" width="1209px" height="907px" 0px /> <br><em>On a boulder above Nymph Lake</em></br></p>
+</div>
+<div id="day-4" class="section level1">
+<h1>Day 4</h1>
+<p>We spent some more time around the campground and hiked the Fern Lake Trail to The Pool.</p>
+<p><img src="pics/IMG_20170606_111425.jpg" width="1209px" height="907px" 0px /> <br><em>On the trail near The Pool</em></br></p>
+<p><img src="pics/IMG_20170606_112225.jpg" width="1209px" height="907px" 0px /> <br><em>The Pool</em></br></p>
+</div>
+<div id="day-5" class="section level1">
+<h1>Day 5</h1>
+<p>We spent some more time around the campground and hit up the Veritas boulder. Arlo killed it.</p>
+<p><img src="pics/IMG_20170607_101103.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170607_100153.jpg" width="1209px" height="907px" 0px /> <br><em>Veritas Boulder</em></br></p>
+</div>
+<div id="day-6" class="section level1">
+<h1>Day 6</h1>
+<p>We drove to the top of the Trail Ridge Road, came back down to Estes Park and had some lunch, and hit up a random roadside boulder we found.</p>
+<p><img src="pics/IMG_20170608_102458.jpg" width="1209px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_103600.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/PANO_20170608_102509.jpg" width="1920px" height="743px" 0px /> <br></p>
+<p><img src="pics/PANO_20170608_102736.jpg" width="1920px" height="445px" 0px /> <br><em>At the top of Trail Ridge Road</em></br></p>
+<p><img src="pics/IMG_20170608_142357.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_142508.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_142941.jpg" width="680px" height="907px" 0px /> <br><em>Throwin for it. Get em.</em></br></p>
+<p><img src="pics/IMG_20170608_143225.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_144254.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_143956.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_144004.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_144153.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_143437.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_143503.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_144359.jpg" width="680px" height="907px" 0px /> <br></p>
+<p><img src="pics/IMG_20170608_144526.jpg" width="680px" height="907px" 0px /> <br><em>Random roadside boulder</em></br></p>
+<p><img src="pics/IMG_20170608_172654.jpg" width="680px" height="907px" 0px /> <br><em>Happy meals for the boys and back to the camp site</em></br></p>
+</div>
+<div id="day-7-and-8" class="section level1">
+<h1>Day 7 and 8</h1>
+<p>We drove… home.</p>
+</div>
+<div id="day-9" class="section level1">
+<h1>Day 9</h1>
+<p>It’s good to be back home and…</p>
+<p><img src="pics/IMG_20170611_185923.jpg" width="680px" height="907px" 0px /> <br>Winston loves black beans.</br></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
