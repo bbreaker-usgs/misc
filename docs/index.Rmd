@@ -1,0 +1,15 @@
+---
+title: "Winston, Arlo, Sydney, and Brian"
+output: 
+  html_document:
+    theme: sandstone
+    css: style.css
+---
+
+<link href="https://fonts.googleapis.com/css?family=Bahiana" rel="stylesheet">
+
+These are some of our adventures.
+
+```{r, out.width="1800px", out.height="1200px", out.extra="0px", echo = FALSE}
+knitr::include_graphics("pics/spaceTravel.png", dpi = 24)
+```
