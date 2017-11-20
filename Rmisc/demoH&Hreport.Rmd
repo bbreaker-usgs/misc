@@ -1,0 +1,137 @@
+---
+title: \vspace{0.5cm} \huge{Title Here}
+author: "Name Here"
+header-includes:
+- \usepackage{titling}
+- \pretitle{\begin{center}\LARGE\bfseries\includegraphics[width=5.5in]{castle.png}\\[\bigskipamount]}
+- \posttitle{\end{center}}
+bibliography: bibliography.bib
+output: 
+  pdf_document:
+    fig_caption: true
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE,
+                      fig.height = 3.5, 
+                      fig.width = 6.5,
+                      root.dir = "C:/Users/WorkingDirectoryHere")
+
+theme_USACE <-  function(base_size = 8){theme(
+  text = element_text(family = 'serif', color = 'black'),
+  line = element_line(colour = 'black', size = 0.5 * 0.352778), # convert from pt to mm
+  rect = element_rect(colour = 'black', size = 0.5 * 0.352778),
+  plot.title = element_text(vjust = 3, size = 9),
+  plot.margin = unit(c(1,1,1,1), 'lines'),
+  panel.border = element_rect(fill = F),
+  #panel.grid.major = element_blank(),
+  #panel.grid.minor = element_blank(),
+  #panel.background = element_rect(fill = 'white'),
+  #defaults legend to upper left, can/should be overridden based on graph
+  legend.background = element_blank(),
+  legend.justification = c("left", "top"),
+  legend.position = c(0.8, 0.5),
+  legend.key = element_blank(),
+  legend.title = element_blank(),
+  axis.title.x = element_text(size = 9),
+  axis.title.y = element_text(angle = 90, size = 9),
+  axis.text.x = element_text(margin = margin(8, 0, 0, 0)),
+  axis.text.y = element_text(margin = margin(0, 8, 0, 0)),
+  axis.ticks.length = unit(0.25 , 'cm')
+)}
+```
+
+# Introduction
+
+Introduction here.
+
+```{r, out.width = "450px", fig.cap = paste("How to make a fig caption.")}
+knitr::include_graphics("castle.png")
+```
+
+## Project Scope
+
+Say something about the scope of the project.
+
+# Hydrologic Analysis
+
+And something about hydrology.
+
+## Hypothetical Design Storms
+
+And something about design storms.
+
+```{r}
+namesT1 <- c("Storm Duration", "10% AEP (inches)", "1% AEP (inches)", 
+           "0.2% AEP (inches)", "PMP (inches)")
+
+duration <- c("5 mins", "15 mins", "1 hour", "2 hours", "3 hours", "6 hours", "12 hours", "24 hours")
+
+per10 <- c(0.64, 1.14, 2.35, 3.00, 3.43, 4.09, 4.66, 5.46)
+
+per1 <- c(0.91, 1.63, 3.47, 4.50, 5.21, 6.26, 7.04, 8.18)
+
+per0.2 <- c(1.11, 1.98, 4.29, 5.61, 6.58, 8.01, 9.06, 10.46)
+
+pmp <- c(4.14, 7.39, 16.0, 20.93, 24.54, 29.88, 33.79, 39.02)
+
+forTable1 <- data.frame(duration, per10, per1, per0.2, pmp)
+
+names(forTable1) <- namesT1
+
+pander::pander(forTable1, split.cell = 10, split.table = Inf, 
+               caption = "Precipitaion depth (inches) for frequency events.... make a table with some data.")
+```
+
+```{r}
+namesT2 <- c("Watershed", "Method", "10% AEP (ft^3^/s)", "1% AEP (ft^3^/s)", 
+             "0.2% AEP (ft^3^/s)", "PMF (ft^3^/s)")
+
+shed <- c("Bob Kidd Dam", "Bob Kidd Dam", "Muddy Fork", "Muddy Fork")
+
+meth <- c("HEC-HMS", "RREs", "HEC-HMS", "RREs")
+
+per10 <- c("1,830", "1,880*", "4,290", "5,670*")
+
+per1 <- c("2,880", "4,710*", "6,990", "13,900*")
+
+per0.2 <- c("3,700", "7,460*", "9,220", "21,760*")
+
+pmf <- c("14,400", "14,500**", "37,400", "40,000**")
+
+forTable2 <- data.frame(shed, meth, per10, per1, per0.2, pmf)
+
+names(forTable2) <- namesT2
+
+pander::pander(forTable2, split.cell = 10, split.table = Inf, 
+               caption = "Peak streamflows for design hydrographs from HEC-HMS model output and from regional statistical analyses from Wagner and others* (2016) and from Crippen and Bue** (1977).")
+```
+
+```{r, out.width = "450px", fig.cap = paste("Make another fig.")}
+knitr::include_graphics("castle.png")
+```
+
+## Watershed Delineation
+
+## Infiltration Loss Rates
+
+## Basin Lag Times and Channel Routing
+
+## Channel Routing
+
+## Other Inflow Tributaries
+
+# Hydraulic Analysis
+
+## Two-dimensional Grid Development
+
+## One-dimensional and Two-dimensional Model Development
+
+# Limitations
+
+\newpage
+
+# References Cited
