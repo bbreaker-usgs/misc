@@ -13,7 +13,7 @@ theme_USACE <-  function(base_size = 8){theme(
   legend.justification = c("left", "top"),
   legend.position = c(0.8, 0.5),
   legend.key = element_blank(),
-  legend.title = element_blank(),
+  legend.title = element_text(size = 9),
   axis.title.x = element_text(size = 9),
   axis.title.y = element_text(angle = 90, size = 9),
   axis.text.x = element_text(margin = margin(8, 0, 0, 0)),
