@@ -37,12 +37,18 @@ recessK <- function(flow, dates) {
       
       chunk <- testDF[(chunk[1, 3] + 1):chunk[2, 3], ]
       
-      retVal <- append(retVal, coef(lm(flow ~ dates, data = chunk))[2])
+      chunk <- chunk[2:(nrow(chunk) * 0.8),]
+      
+      kVal <- coef(lm(flow ~ dates, data = chunk))[2]
+      
+      kVal <- signif(kVal, 3)
+      
+      retVal <- append(retVal, kVal)
       
     }
     
   }
   
-  return(signif(mean(retVal, na.rm = TRUE), 3))
+  return(mean(retVal, na.rm = TRUE))
   
 }
