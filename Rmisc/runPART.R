@@ -87,8 +87,6 @@ runPART <- function (flow, dates, start = NULL, end = NULL, drnArea) {
   flow <- pmax(flow[sel], 1e-99)
   if (any(is.na(flow))) {
     retVec <- NA
-  } else if (any(diff(as.double(dates)) != 1)) {
-    retVec <- NA
   } else {
     Nact <- max(drnArea^0.2, 1)
     N <- as.integer(ceiling(Nact))
