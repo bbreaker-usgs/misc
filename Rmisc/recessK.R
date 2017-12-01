@@ -37,7 +37,7 @@ recessK <- function(flow, dates) {
       
       chunk <- testDF[(chunk[1, 3] + 1):chunk[2, 3], ]
       
-      chunk <- chunk[2:(nrow(chunk) * 0.8),]
+      chunk <- chunk[(nrow(chunk) * 0.4):(nrow(chunk) * 0.8),]
       
       kVal <- coef(lm(flow ~ dates, data = chunk))[2]
       
