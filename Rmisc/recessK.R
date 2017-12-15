@@ -19,11 +19,17 @@ recessK <- function(flow, baseQ, dates) {
     
     testRle$cumVal <- cumsum(testRle$lengths)
     
-    testRleDF <- testRle %>%
-      mutate(qualK = if_else(vals != "fall", 0, 
-                             if_else(lengths < limVal, 0, 1))) %>% 
-      group_by(qualK) %>% 
-      mutate(Index = ifelse(qualK == 0, 0, 1:n())) %>% 
+    #testRleDF <- testRle %>%
+    #  mutate(qualK = if_else(vals != "fall", 0, 
+    #                         if_else(lengths < limVal, 0, 1))) %>% 
+    #  group_by(qualK) %>% 
+    #  mutate(Index = ifelse(qualK == 0, 0, 1:n())) %>% 
+    #  data.frame()
+    
+    testRleDF <- testRle %>% 
+      mutate(qualk = if_else(vals == "base", 0, 1)) %>% 
+      group_by(qualk) %>% 
+      mutate(index = ifelse(qualk == 0, 0, 1:n())) %>% 
       data.frame()
     
     retVal <- as.numeric()
