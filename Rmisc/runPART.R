@@ -73,18 +73,8 @@ eventNum <- function (event, reset = FALSE, na.fix = FALSE) {
   return(ret.val)
 }
 
-runPART <- function (flow, dates, start = NULL, end = NULL, drnArea) {
-  if (is.null(start)) 
-    start <- dates[1L]
-  else if (is.character(start)) 
-    start <- as.Date(start)
-  if (is.null(end)) 
-    end <- dates[length(dates)]
-  else if (is.character(end)) 
-    end <- as.Date(end)
-  sel <- (dates >= start) & (dates <= end)
-  dates <- dates[sel]
-  flow <- pmax(flow[sel], 1e-99)
+runPART <- function (flow, dates, drnArea) {
+  flow <- pmax(flow, 1e-99)
   if (any(is.na(flow))) {
     retVec <- NA
   } else {

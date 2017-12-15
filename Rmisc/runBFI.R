@@ -1,5 +1,4 @@
-waterYEar <- function (x, numeric = FALSE) 
-{
+waterYEar <- function (x, numeric = FALSE) {
   x <- as.POSIXlt(x)
   yr <- x$year + 1900L
   mn <- x$mon + 1L
@@ -9,15 +8,15 @@ waterYEar <- function (x, numeric = FALSE)
   ordered(yr)
 }
 
-runBFI <- function(flow, dates, f = 0.9, N = 5L) {
-  flow <- pmax(flow[sel], 10^(-2.5))
-  by <- match.arg(by, c("water year", "calendar year", "continuous"))
-  if (by == "calendar year") {
+runBFI <- function(flow, dates, f = 0.9, N = 5L, by = "calYear") {
+  flow <- pmax(flow, 10^(-2.5))
+  by <- match.arg(by, c("watYear", "calYear", "continuous"))
+  if (by == "calYear") {
     Cut <- c(seq(0, 360, by = N, ), 366)
-    Yr <- year(dates)
-    dayno <- yday
+    Yr <- lubridate::year(dates)
+    dayno <- lubridate::yday
   }
-  else if (by == "water year") {
+  else if (by == "watYear") {
     Cut <- c(seq(0, 360, by = N, ), 366)
     Yr <- waterYear(dates, numeric = TRUE)
     dayno <- function(x) {
@@ -76,7 +75,7 @@ runBFI <- function(flow, dates, f = 0.9, N = 5L) {
                          seq(TPdat[i, 1L], TPdat[i + 1L, 1L], 
                              length.out = TPdat[i + 1L, 2L] - TPdat[i, 2L] + 1L))
     }
-    else BaseQ[Rng] <- pmin(Flow[Rng], 
+    else BaseQ[Rng] <- pmin(flow[Rng], 
                             exp(seq(log(TPdat[i, 1L]),
                                     log(TPdat[i + 1L, 1L]), 
                                     length.out = TPdat[i + 1L, 2L] - TPdat[i, 2L] + 1L)))

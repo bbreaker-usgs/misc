@@ -1,4 +1,4 @@
-recessK <- function(flow, dates) {
+recessK <- function(flow, baseQ, dates) {
   
   library(dplyr)
   
@@ -8,19 +8,16 @@ recessK <- function(flow, dates) {
     
   } else {
     
-    testDF <- data.frame(dates = dates, flow = flow)
+    testDF <- data.frame(dates = dates, flow = flow, baseQ = baseQ)
     
-    testDF$diffQ <- c(0, diff(flow)) 
+    testDF$diffQ <- testDF$flow - testDF$baseQ
     
-    testDF$diffLog <- if_else(testDF$diffQ < 0, "fall", "notFall")
+    testDF$diffLog <- if_else(testDF$diffQ == 0, "base", "event")
     
     testRle <- data.frame(lengths = rle(testDF$diffLog)$lengths,
                           vals = rle(testDF$diffLog)$values)
     
     testRle$cumVal <- cumsum(testRle$lengths)
-    
-    limVal <- quantile(testRle[which(testRle$vals == "fall"), 1], 
-                       probs = 0.99)
     
     testRleDF <- testRle %>%
       mutate(qualK = if_else(vals != "fall", 0, 
