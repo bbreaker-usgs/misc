@@ -71,7 +71,7 @@ runBFI <- function(flow, dates, f = 0.9, N = 5L, by = "calYear") {
   for (i in seq(1L, nrow(TPdat) - 1L)) {
     Rng <- seq(TPdat[i, 2L], TPdat[i + 1L, 2L])
     if (TPdat[i, 1L] == 0 || TPdat[i + 1L, 1L] == 0) {
-      BaseQ[Rng] <- pmin(Flow[Rng], 
+      BaseQ[Rng] <- pmin(flow[Rng], 
                          seq(TPdat[i, 1L], TPdat[i + 1L, 1L], 
                              length.out = TPdat[i + 1L, 2L] - TPdat[i, 2L] + 1L))
     }
