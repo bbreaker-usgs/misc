@@ -12,7 +12,7 @@ recessK <- function(flow, baseQ, dates) {
     
     testDF$diffQ <- testDF$flow - testDF$baseQ
     
-    testDF$diffLog <- if_else(testDF$diffQ == 0, "base", "event")
+    testDF$diffLog <- dplyr::if_else(testDF$diffQ == 0, "base", "event")
     
     testRle <- data.frame(lengths = rle(testDF$diffLog)$lengths,
                           vals = rle(testDF$diffLog)$values)
@@ -36,13 +36,13 @@ recessK <- function(flow, baseQ, dates) {
 
     for (i in seq(1, nrow(dplyr::filter(testRleDF, qualK == 1)), 1)) {
       
-      chunk <- testRleDF[(which(testRleDF$Index == i) - 1):which(testRleDF$Index == i), ]
+      chunk <- testRleDF[(which(testRleDF$index == i) - 1):which(testRleDF$index == i), ]
       
-      chunk <- testDF[(chunk[1, 3] + 1):chunk[2, 3], ]
+      chunk <- testDF[(chunk[1, 3]):(chunk[2, 3] + 1), ]
       
-      chunk <- chunk[(nrow(chunk) * 0.4):(nrow(chunk) * 0.8),]
       
-      kVal <- coef(lm(flow ~ dates, data = chunk))[2]
+      
+      #kVal <- coef(lm(flow ~ dates, data = chunk))[2]
       
       kVal <- signif(kVal, 3)
       
