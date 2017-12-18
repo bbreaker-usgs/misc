@@ -41,19 +41,15 @@ recessK <- function(flow, baseQ, dates) {
         
       } else {
         
-        for (k in seq(2, nrow(chunk), 1)) {
-          
-          kValEvent_ <- chunk[(k + 1), 3] / chunk[k, 3]
-          
-          kValEvent <- append(kValEvent, kValEvent_)
-          
-        }
+        kValEvent_ <- chunk[2, 2] / chunk[1, 2]
         
+        kValEvent <- append(kValEvent, kValEvent_)
+          
       }
       
     }
     
-    kVal <- signif(mean(kValEvent, na.rm = TRUE), 3)
+    kVal <- signif(quantile(kValEvent, probs = 0.01, na.rm = TRUE), 3)
     
   }
   
