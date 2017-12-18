@@ -27,11 +27,13 @@ recessK <- function(flow, baseQ, dates) {
     
     kValEvent <- as.numeric()
     
-    for (i in seq(1, max(testRleDF$index) - 1, 1)) {
+    for (i in seq(2, max(testRleDF$index) - 1, 1)) {
       
-      chunk <- testRleDF[(which(testRleDF$index == i)):(which(testRleDF$index == i) + 1), ]
+      chunk <- testRleDF[(which(testRleDF$index == i) - 1):(which(testRleDF$index == i) + 1), ]
       
-      chunk <- testDF[(chunk[1, 3]):(chunk[2, 3] + 1), ]
+      chunk <- testDF[(chunk[2, 3]):(chunk[nrow(chunk), 3]), ]
+      
+      chunk$baseQ <- dplyr::if_else(chunk$baseQ == 0, 0.0001, chunk$baseQ)
       
       if (nrow(chunk) <= 4) {
         
@@ -39,7 +41,7 @@ recessK <- function(flow, baseQ, dates) {
         
       } else {
         
-        for (k in seq(2, nrow(chunk) - 2, 1)) {
+        for (k in seq(2, nrow(chunk), 1)) {
           
           kValEvent_ <- chunk[(k + 1), 3] / chunk[k, 3]
           

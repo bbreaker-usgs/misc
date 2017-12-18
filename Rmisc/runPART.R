@@ -157,7 +157,7 @@ runPART <- function (flow, dates, drnArea) {
     }
     Ffact <- NC - Nact
     BaseQ <- BaseQF * Ffact + BaseQC * (1 - Ffact)
-    retVec <- signif(BaseQ, 3)
+    retVec <- signif(BaseQ, 5)
   }
   return(retVec)
 }
