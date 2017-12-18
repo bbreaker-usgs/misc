@@ -37,8 +37,6 @@ recessK <- function(flow, baseQ, dates) {
         
         kValEvent_ <- NA
         
-        kValEvent <- append(kValEvent, kValEvent_)
-        
       } else {
         
         for (k in seq(2, nrow(chunk) - 2, 1)) {
@@ -49,11 +47,9 @@ recessK <- function(flow, baseQ, dates) {
           
         }
         
-        kVal <- mean(kValEvent, na.rm = TRUE)
-        
       }
       
-      kVal <- signif(kVal, 3)
+      kVal <- signif(mean(kValEvent, na.rm = TRUE), 3)
       
     }
     
