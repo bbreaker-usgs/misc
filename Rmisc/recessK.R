@@ -1,6 +1,6 @@
 recessK <- function(flow, baseQ, dates) {
   
-  library(dplyr)
+  library(dplyr, quietly = TRUE)
   
   if (any(is.na(flow))) {
     
@@ -19,39 +19,46 @@ recessK <- function(flow, baseQ, dates) {
     
     testRle$cumVal <- cumsum(testRle$lengths)
     
-    #testRleDF <- testRle %>%
-    #  mutate(qualK = if_else(vals != "fall", 0, 
-    #                         if_else(lengths < limVal, 0, 1))) %>% 
-    #  group_by(qualK) %>% 
-    #  mutate(Index = ifelse(qualK == 0, 0, 1:n())) %>% 
-    #  data.frame()
-    
     testRleDF <- testRle %>% 
       mutate(qualk = if_else(vals == "base", 0, 1)) %>% 
       group_by(qualk) %>% 
       mutate(index = ifelse(qualk == 0, 0, 1:n())) %>% 
       data.frame()
     
-    retVal <- as.numeric()
-
-    for (i in seq(1, nrow(dplyr::filter(testRleDF, qualK == 1)), 1)) {
+    for (i in seq(1, max(testRleDF$index) - 1, 1)) {
       
-      chunk <- testRleDF[(which(testRleDF$index == i) - 1):which(testRleDF$index == i), ]
+      chunk <- testRleDF[(which(testRleDF$index == i)):(which(testRleDF$index == i) + 1), ]
       
       chunk <- testDF[(chunk[1, 3]):(chunk[2, 3] + 1), ]
       
-      kval <- chunk[row_number(max(chunk$baseQ)), 3] / chunk[nrow(chunk), 3]
+      kValEvent <- as.numeric()
       
-      #kVal <- coef(lm(flow ~ dates, data = chunk))[2]
+      if (nrow(chunk) <= 4) {
+        
+        kValEvent_ <- NA
+        
+        kValEvent <- append(kValEvent, kValEvent_)
+        
+      } else {
+        
+        for (k in seq(2, nrow(chunk) - 2, 1)) {
+          
+          kValEvent_ <- chunk[(k + 1), 3] / chunk[k, 3]
+          
+          kValEvent <- append(kValEvent, kValEvent_)
+          
+        }
+        
+        kVal <- mean(kValEvent, na.rm = TRUE)
+        
+      }
       
       kVal <- signif(kVal, 3)
-      
-      retVal <- append(retVal, kVal)
       
     }
     
   }
   
-  return(mean(retVal, na.rm = TRUE))
+  return(kVal)
   
 }

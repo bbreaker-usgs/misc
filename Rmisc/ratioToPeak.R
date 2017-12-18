@@ -27,13 +27,13 @@ ratioToPeak <- function(flow, baseQ, dates) {
     
     retVal <- as.numeric()
     
-    for (i in seq(1, nrow(dplyr::filter(testRleDF, qualK == 1)), 1)) {
+    for (i in seq(2, max(testRleDF$index) - 1, 1)) {
       
       chunk <- testRleDF[(which(testRleDF$index == i) - 1):which(testRleDF$index == i), ]
       
       chunk <- testDF[(chunk[1, 3]):(chunk[2, 3] + 1), ]
       
-      kval <- chunk[row_number(max(chunk$baseQ)), 3] / chunk[nrow(chunk), 3]
+      kVal <- chunk[nrow(chunk), 3] / max(chunk$flow, na.rm = TRUE)
       
       kVal <- signif(kVal, 3)
       
@@ -41,8 +41,10 @@ ratioToPeak <- function(flow, baseQ, dates) {
       
     }
     
+    retVal <- signif(mean(retVal, na.rm = TRUE), 3)
+    
   }
   
-  return(mean(retVal, na.rm = TRUE))
+  return(retVal)
   
 }
