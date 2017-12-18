@@ -25,13 +25,13 @@ recessK <- function(flow, baseQ, dates) {
       mutate(index = ifelse(qualk == 0, 0, 1:n())) %>% 
       data.frame()
     
+    kValEvent <- as.numeric()
+    
     for (i in seq(1, max(testRleDF$index) - 1, 1)) {
       
       chunk <- testRleDF[(which(testRleDF$index == i)):(which(testRleDF$index == i) + 1), ]
       
       chunk <- testDF[(chunk[1, 3]):(chunk[2, 3] + 1), ]
-      
-      kValEvent <- as.numeric()
       
       if (nrow(chunk) <= 4) {
         
@@ -49,9 +49,9 @@ recessK <- function(flow, baseQ, dates) {
         
       }
       
-      kVal <- signif(mean(kValEvent, na.rm = TRUE), 3)
-      
     }
+    
+    kVal <- signif(mean(kValEvent, na.rm = TRUE), 3)
     
   }
   
