@@ -132,12 +132,12 @@ aep4rgnC <- function(DRNAREA, BSHAPE, LC11PAST, UPZ) {
   return(x)
 }
 
-aeprgnC <- function(DRNAREA, BSHAPE, LC11PAST, UPZ) {
+aep2rgnC <- function(DRNAREA, BSHAPE, LC11PAST, UPZ) {
   x <- (DRNAREA^0.757)*(BSHAPE^-0.474)*(10^(3.434-(0.249*(0.01*LC11PAST+1))+(0.147*(0.01*UPZ+1)))) 
   return(x)
 }
 
-aeprgnC <- function(DRNAREA, BSHAPE, LC11PAST, UPZ) {
+aep1rgnC <- function(DRNAREA, BSHAPE, LC11PAST, UPZ) {
   x <- (DRNAREA^0.768)*(BSHAPE^-0.522)*(10^(3.522-(0.242*(0.01*LC11PAST+1))+(0.152*(0.01*UPZ+1)))) 
   return(x)
 }
