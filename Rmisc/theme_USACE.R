@@ -11,10 +11,12 @@ theme_USACE <-  function(base_size = 8){theme(
   #defaults legend to upper left, can/should be overridden based on graph
   legend.background = element_blank(),
   legend.justification = c("left", "top"),
+  legend.position = c(0.8, 0.5),
   # this value should be adjusted dependent on 
   # graph with the addition of another 
   # theme(legend.position = c(X, Y)) argument after theme_USACE()
-  legend.position = c(0.8, 0.5),
+  # or... for no legend 
+  # legend.position = element_blank(),
   legend.key = element_blank(),
   legend.title = element_text(size = 9),
   #legend.title = element_blank(), 
